@@ -1,0 +1,19 @@
+nav {
+    border-bottom: 1px solid black;
+}
+
+body {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.crumbs ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.crumb {
+    display: inline-block;
+}
