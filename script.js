@@ -1,4 +1,11 @@
-let getRandomRecipeButton = document.getElementById('randomRecButton')
+let getRandomRecipeButton = document.getElementById('randomRecButton'),
+    apis = ['https://themealdb.com/api/json/v1/1/categories.php','https://themealdb.com/api/json/v1/1/list.php?a=list','https://themealdb.com/api/json/v1/1/list.php?i=list'],
+    searchIngreditents,
+    searchAreas,
+    searchCategories,
+    apiResponse,
+    apiData
+;
 
 async function getRandomRecipe() {
     const response = await fetch('https://themealdb.com/api/json/v1/1/random.php');
@@ -11,27 +18,19 @@ async function getRandomRecipe() {
     return data;
 }
 
+async function getFilterList(apiURL) {
+    const response = await fetch(apiURL);
+    const data = await response.json();
+    // error handling!
+    console.log(data);
+    return data;
+}
+
 getRandomRecipeButton.addEventListener('click', getRandomRecipe);
 
-// getRandomRecipeButton.addEventListener('click',  function (event) {
-    
-//     console.log('clicked')
+for(var i = 0; i < apis.length; i++){
+    getFilterList(apis[i])
+}
 
-//     let button = event.target
 
-//     // fetch random recipe from API
-//     fetch('https://themealdb.com/api/json/v1/1/random.php'
-//     // , {options --> method, body, ... }
-//     )
-//     .then(res => {
-//         if(res.ok){
-//            console.log('Success')
-//         } else {
-//             console.log('Not successful')
-//         }
-//     })
-//     .then(data => console.log(data))
-//     .catch(error => console.log('Error: Something went wrong with the connection'))
-   
-// })
 
